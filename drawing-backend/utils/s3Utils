@@ -1,0 +1,60 @@
+// Load the AWS SDK for Node.js
+var AWS = require('aws-sdk');
+const { v4 } = require('uuid');
+const { writeFileSync, readFileSync, createReadStream } = require("fs")
+// Set the region 
+AWS.config.update({region: 'us-east-1'});
+
+// Create S3 service object
+var s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
+const upload = (image = {}) => {
+
+
+  const buf = Buffer.from(image.toString());
+  var uploadParams = {Bucket: "draw-app", Key: v4(), Body: buf, ContentEncoding: 'base64',
+  ContentType: 'image/jpeg'};
+  // // call S3 to retrieve upload file to specified bucket
+  s3.upload (uploadParams, function (err, data) {
+    if (err) {
+      throw err
+    } if (data) {
+      console.log("Upload Success", data.Location);
+    }
+  });
+}
+
+const getListOfImages = async () => {
+  var getParams = {
+    Bucket: 'draw-app', // your bucket name,
+    MaxKeys: 10
+  }
+
+  try {
+    const data = await s3.listObjects(getParams).promise();
+    let images = [];
+    if(data && data.Contents && data.Contents.length > 0) {
+      images = data.Contents.map(image => image.Key);
+    }
+    return images;
+  } catch(e) {
+    throw e;
+  }
+}
+
+const getImage = async (key) => {
+  var getParams = {
+    Bucket: 'draw-app', // your bucket name,
+    Key: key
+  }
+
+  try {
+    const data = await s3.getObject(getParams).promise();
+    const buf = Buffer.from(data.Body, "base64");
+    return data.Body.toString("utf-8");
+  } catch(e) {
+    return "";
+  }
+}
+
+module.exports = { upload, getListOfImages, getImage }

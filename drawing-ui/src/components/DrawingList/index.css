@@ -1,0 +1,35 @@
+.Thumbnail {
+  max-width: 150px;
+  max-height: 150px;
+  padding: 0.25rem;
+  border: solid;
+  border-width: thin;
+  border-color: black;  
+}
+.Image-Wrapper {
+  padding: 0.5rem;
+  display: inline;
+  width: 200px;
+  height: 200px;
+}
+.Menu {
+  width: initial;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  align-items: center;
+  background-color: #a3a3a32d;
+  margin: auto;
+}
+.Menu-Wrapper {
+  margin-bottom: 1rem;
+}
+.Draw-Wrapper {
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
+}
+.Drawing-List {
+  background-image: linear-gradient( 120deg, #fdfbfb 0%, #ebedee 100%);
+  height: 100vh
+}
