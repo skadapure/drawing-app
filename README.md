@@ -16,3 +16,6 @@ This repository is divided into 2 projects -
 
 ## List
 <img src="screenshots/List.png" width=750/>
+
+## Login
+The login functionality is fake as the ideal way to do it is through IDP
