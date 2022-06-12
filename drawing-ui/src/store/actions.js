@@ -7,7 +7,6 @@ export const uploadImage = (image, userId) => {
 }
 
 export const getImage = async (dispatch, userId) => {
-  console.log("USERID", userId);
   get(`/images/${userId}`).then((res) => { 
     const resp = res.data || [];
     dispatch({ type: GET_IMAGE_SUCCESS, payload: resp });

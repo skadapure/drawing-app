@@ -45,7 +45,6 @@ const getListOfImages = async (userId) => {
 }
 
 const getImage = async (key, userId) => {
-  console.log(key, userId);
   var getParams = {
     Bucket: 'draw-app',
     Key: `${key}`
