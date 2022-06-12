@@ -7,7 +7,6 @@ const getImage = require("./api-controller/get-image");
 const login = require("./api-controller/login");
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const getImagesList = require('./api-controller/get-images-list');
 // const checkAuth = require("./middleware/check-auth");
 
 // Constants
@@ -23,7 +22,6 @@ app.use(bodyParser.json());app.use(bodyParser.urlencoded({extended: false}))
 // app.use(checkAuth);
 sample(app);
 uploadImage(app);
-getImagesList(app);
 getImage(app);
 login(app);
 app.listen(PORT, HOST, () => {
