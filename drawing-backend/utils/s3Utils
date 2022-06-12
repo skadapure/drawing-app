@@ -8,11 +8,11 @@ AWS.config.update({region: 'us-east-1'});
 // Create S3 service object
 var s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
-const upload = (image = {}) => {
+const upload = (image, userId) => {
 
 
   const buf = Buffer.from(image.toString());
-  var uploadParams = {Bucket: "draw-app", Key: v4(), Body: buf, ContentEncoding: 'base64',
+  var uploadParams = {Bucket: "draw-app", Key: `${userId}/${v4()}`, Body: buf, ContentEncoding: 'base64',
   ContentType: 'image/jpeg'};
   // // call S3 to retrieve upload file to specified bucket
   s3.upload (uploadParams, function (err, data) {
@@ -24,10 +24,12 @@ const upload = (image = {}) => {
   });
 }
 
-const getListOfImages = async () => {
+const getListOfImages = async (userId) => {
+  console.log(userId);
   var getParams = {
-    Bucket: 'draw-app', // your bucket name,
-    MaxKeys: 10
+    Bucket: "draw-app",
+    MaxKeys: 10,
+    Prefix: `${userId}/`
   }
 
   try {
@@ -42,10 +44,11 @@ const getListOfImages = async () => {
   }
 }
 
-const getImage = async (key) => {
+const getImage = async (key, userId) => {
+  console.log(key, userId);
   var getParams = {
-    Bucket: 'draw-app', // your bucket name,
-    Key: key
+    Bucket: 'draw-app',
+    Key: `${key}`
   }
 
   try {

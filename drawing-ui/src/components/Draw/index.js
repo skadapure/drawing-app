@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Menu from "../Menu";
 import "./index.css";
 import { uploadImage } from "../../store/actions";
+import { useStore } from "../../store";
 
 function Draw() {
 const canvasRef = useRef(null);
@@ -10,6 +11,7 @@ const [isDrawing, setIsDrawing] = useState(false);
 const [lineWidth, setLineWidth] = useState(5);
 const [lineColor, setLineColor] = useState("black");
 const [lineOpacity, setLineOpacity] = useState(0.1);
+const { userId } = useStore();
 // Initialization when the component
 // mounts for the first time
 useEffect(() => {
@@ -23,7 +25,6 @@ useEffect(() => {
 	ctxRef.current = ctx;
 }, [lineColor, lineOpacity, lineWidth]);
 
-console.log("DARW");
 // Function for starting the drawing
 const startDrawing = (e) => {
 		ctxRef.current.beginPath();
@@ -54,7 +55,7 @@ const draw = (e) => {
 
 const save = () => {
 	const image = canvasRef.current.toDataURL('image/jpeg');
-	uploadImage(image);
+	uploadImage(image, userId);
 }
 
 return (

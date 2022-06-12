@@ -8,10 +8,10 @@ import "./index.css";
 const DrawingList = () => {
   const dispatch = useDispatch();
 
-  const { images } = useStore();
+  const { images, userId } = useStore();
   useEffect(() => {
-      getImage(dispatch);
-  }, [dispatch]);
+      getImage(dispatch, userId);
+  }, [dispatch, userId]);
 
   return(
     <div className="Drawing-List">

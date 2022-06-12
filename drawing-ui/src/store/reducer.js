@@ -12,7 +12,6 @@ export const reducer = (state, {type, payload}) => {
       return { ...state, images};
     }
     case LOGIN: {
-      console.log("PAY", payload)
       return { ...state, userId: payload} 
     }
     default: return state;

@@ -1,3 +1,3 @@
 const controller = require("./controller");
 
-module.exports = app => app["get"]("/images", (req, res, next) => controller(req, res, next));
+module.exports = app => app["get"]("/images/:userId", (req, res, next) => controller(req, res, next));
