@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ."
+    "start": "cross-env AWS_SDK_LOAD_CONFIG=0 nodemon ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1150.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
     "nodemon": "^2.0.16"

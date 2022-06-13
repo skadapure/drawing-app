@@ -1,3 +1,3 @@
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     res.send("Hello from controller")
 }

@@ -36,3 +36,6 @@ No API Documentation like swagger is being implemented here
 
 # Testing
 No testing
+
+# Access to s3
+The bucket used is not public, so there is a need to replace the bucket name with the one thagt is accessible when running these
