@@ -19,6 +19,8 @@ This repository is divided into 2 projects -
 
 ## Login
 The login functionality is fake as the ideal way to do it is through IDP
+User1 - user1/password1
+User2 - user2/password2
 
 ## Missing advanced features
  - Clear drawing
